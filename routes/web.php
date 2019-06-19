@@ -26,5 +26,10 @@ $router->group(['prefix'=>'api/v1/', 'middleware' => 'auth:api'], function () us
     $router->get('users/{id}', ['uses' => 'UserController@showOneUser']);
     $router->delete('users/{id}', ['uses' => 'UserController@delete']);
     $router->put('users/{id}', ['uses' => 'UserController@update']);
-
+    // jobs
+    $router->post('jobs', ['uses' => 'JobsController@create']);
+    $router->put('jobs/{id}', ['uses' => 'JobsController@update']);
+    $router->delete('jobs/{id}', ['uses' => 'JobsController@delete']);
+    $router->get('jobs/{id}', ['uses' => 'JobsController@ShowOneJob']);
+    $router->get('jobs', ['uses'=>'JobsController@showAllJobs']);
 });
