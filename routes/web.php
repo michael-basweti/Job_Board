@@ -16,7 +16,15 @@ $router->get('/', function () use ($router) {
 });
 $router->group(['prefix'=>'api/v1/'], function () use ($router){
 
-    // $router->post('users', ['uses' => 'UserController@create']);
+    $router->post('users', ['uses' => 'UserController@create']);
     $router->post('login',['uses' => 'AuthController@postLogin']);
+
+});
+$router->group(['prefix'=>'api/v1/', 'middleware' => 'auth:api'], function () use ($router){
+    // users
+    $router->get('users', ['uses'=>'UserController@showAllUsers']);
+    // $router->get('users/{id}', ['uses' => 'UserController@showOneUser']);
+    // $router->delete('users/{id}', ['uses' => 'UserController@delete']);
+    $router->put('users/{id}', ['uses' => 'UserController@update']);
 
 });
