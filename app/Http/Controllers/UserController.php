@@ -27,6 +27,9 @@ class UserController extends Controller
             'email'=>'required|string|email|max:255|unique:users',
             'password'=>'required|string|min:6',
             'role'=>'required|in:employer,applicant',
+        ],
+        [
+            'role.in' => 'role has to be either applicant or emmployer!',
         ]);
 
 
