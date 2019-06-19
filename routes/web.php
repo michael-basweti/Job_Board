@@ -32,4 +32,10 @@ $router->group(['prefix'=>'api/v1/', 'middleware' => 'auth:api'], function () us
     $router->delete('jobs/{id}', ['uses' => 'JobsController@delete']);
     $router->get('jobs/{id}', ['uses' => 'JobsController@ShowOneJob']);
     $router->get('jobs', ['uses'=>'JobsController@showAllJobs']);
+    // applications
+    $router->post('applications', ['uses' => 'ApplicationController@create']);
+    $router->put('applications/{id}', ['uses' => 'ApplicationController@update']);
+    $router->delete('applications/{id}', ['uses' => 'ApplicationController@delete']);
+    $router->get('applications/{id}', ['uses' => 'ApplicationController@ShowOneApplication']);
+    $router->get('applications', ['uses'=>'ApplicationController@showAllApplications']);
 });
