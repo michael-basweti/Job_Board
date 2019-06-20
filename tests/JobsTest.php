@@ -127,6 +127,15 @@ class JobTest extends TestCase
         $response = $this->get("/api/v1/jobs/{$job->id}");
         $response->assertResponseStatus(200);
     }
+    public function testUserCanViewOneJobWithoutAuth()
+    {
+        $user = factory(User::class)->states('employer')->create([
+            'password' => app('hash')->make($password = 'i-love-laravel'),
+        ]);
+        $job = factory(Job::class)->create();
+        $response = $this->get("/api/v1/jobs/{$job->id}/applications");
+        $response->assertResponseStatus(401);
+    }
     public function testUserCanViewOneJobWithApplications()
     {
         $user = factory(User::class)->states('employer')->create([
