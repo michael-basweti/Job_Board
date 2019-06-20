@@ -146,6 +146,17 @@ class JobTest extends TestCase
         $response = $this->get("/api/v1/jobs/{$job->id}/applications");
         $response->assertResponseStatus(200);
     }
+    public function testUserCanViewOneJobWithApplicationsNonExisting()
+    {
+        $user = factory(User::class)->states('employer')->create([
+            'password' => app('hash')->make($password = 'i-love-laravel'),
+        ]);
+        $this->be($user);
+        $job = factory(Job::class)->create();
+        $response = $this->get("/api/v1/jobs/441/applications");
+        $response->assertResponseStatus(404);
+        $response->seeJson(["job not available"]);
+    }
 
     public function testUserCannotViewNonExistingJob()
     {
@@ -156,6 +167,7 @@ class JobTest extends TestCase
         $job = factory(Job::class)->create();
         $response = $this->get("/api/v1/jobs/201");
         $response->assertResponseStatus(404);
+        $response->seeJson(["job not available"]);
     }
 
     public function testUserCanUpdateJobWithAuthorization()

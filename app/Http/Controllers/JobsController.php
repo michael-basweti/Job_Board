@@ -36,7 +36,7 @@ class JobsController extends Controller
         try {
             $jobs = Job::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return response()->json(["status" => "error", "message" => "job not available"], 404);
+            return response()->json("job not available", 404);
         }
         return response()->json($jobs, 200);
     }
@@ -46,7 +46,7 @@ class JobsController extends Controller
         try {
             $jobs = Job::with('applications')->findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return response()->json(["status" => "error", "message" => "job not available"], 404);
+            return response()->json("job not available", 404);
         }
         return response()->json($jobs, 200);
     }
