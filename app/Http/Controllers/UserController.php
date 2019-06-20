@@ -41,7 +41,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json($user, 201);
+        return response()->json("User created", 201);
     }
 
     public function update($id, Request $request)

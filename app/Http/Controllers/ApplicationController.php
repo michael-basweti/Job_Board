@@ -56,7 +56,7 @@ class ApplicationController extends Controller
         try {
             $applications = Application::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return response()->json(["status" => "error", "message" => "application not available"], 404);
+            return response()->json("application not available", 404);
         }
         if(Auth::user()->role=="applicant"){
             if(Auth::id()==$applications->user_id){
@@ -75,7 +75,7 @@ class ApplicationController extends Controller
         try {
             $application = Application::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return response()->json(["status" => "error", "message" => "application not available"], 404);
+            return response()->json("application not available", 404);
         }
 
         if(Auth::user()->role=="applicant"){
@@ -86,7 +86,7 @@ class ApplicationController extends Controller
                 return response()->json(["status" => "error", "message" => "Only the owner can delete this job"], 403);
             }
         }else {
-            return response()->json(["status" => "error", "message" => "Only applicants can perform this action"], 403);
+            return response()->json("Only applicants can perform this action", 403);
         }
 
     }

@@ -11,21 +11,13 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Job::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'title' => $faker->sentence,
+        'description' => $faker->paragraph(9),
+        "delivery_date"=>"02/02/1997",
+        "user_id"=>1,
+        "expected_income"=>"2000",
+        "start_date"=>"02/02/1997"
     ];
 });
-
-$factory->state(\App\User::class, 'employer', function (\Faker\Generator $faker) {
-    return [
-      'role' => 'employer',
-    ];
-  });
-
-  $factory->state(\App\User::class, 'applicant', function (\Faker\Generator $faker) {
-    return [
-      'role' => 'applicant',
-    ];
-  });

@@ -83,7 +83,7 @@ class JobsController extends Controller
         try {
             $jobs = Job::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return response()->json(["status" => "error", "message" => "job not available"], 404);
+            return response()->json("Job Not Found", 404);
         }
         if(Auth::user()->role=="employer"){
             if(Auth::id()==$jobs->user_id){
@@ -102,7 +102,7 @@ class JobsController extends Controller
         try {
             $job = Job::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return response()->json(["status" => "error", "message" => "job not available"], 404);
+            return response()->json("job not available", 404);
         }
 
         if(Auth::user()->role=="employer"){
@@ -110,10 +110,10 @@ class JobsController extends Controller
                 $job->delete();
                 return response('Deleted Successfully', 204);
             }else{
-                return response()->json(["status" => "error", "message" => "Only the owner can delete this job"], 403);
+                return response()->json("Only the owner can delete this job", 403);
             }
         }else {
-            return response()->json(["status" => "error", "message" => "Only employers can perform this action"], 403);
+            return response()->json("Only employers can perform this action", 403);
         }
 
     }
