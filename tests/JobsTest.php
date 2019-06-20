@@ -89,6 +89,28 @@ class JobTest extends TestCase
         $response->assertResponseStatus(200);
         $response->seeJson(['description' => $job->description]);
     }
+    // public function testuserCansortAsc()
+    // {
+    //     $user = factory(User::class)->states('employer')->create([
+    //         'password' => app('hash')->make($password = 'i-love-laravel'),
+    //     ]);
+    //     $job = factory(Job::class, 5)->create();
+    //     $this->be($user);
+    //     $response = $this->get("/api/v1/jobs?sort_asc");
+    //     $response->assertResponseStatus(200);
+    //     $response->seeJson(['description' => $job->description]);
+    // }
+    // public function testuserCanSortDesc()
+    // {
+    //     $user = factory(User::class)->states('employer')->create([
+    //         'password' => app('hash')->make($password = 'i-love-laravel'),
+    //     ]);
+    //     $job = factory(Job::class, 5)->create();
+    //     $this->be($user);
+    //     $response = $this->get("/api/v1/jobs?sort_desc=asc");
+    //     $response->assertResponseStatus(200);
+    //     $response->seeJson(['description' => $job->description]);
+    // }
     public function testuserCanLimitAndOffsetJobs()
     {
         $user = factory(User::class)->states('employer')->create([
