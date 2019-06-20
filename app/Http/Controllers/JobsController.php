@@ -27,6 +27,16 @@ class JobsController extends Controller
         return response()->json($jobs, 200);
     }
 
+    public function showJobWithApplications($id)
+    {
+        try {
+            $jobs = Job::with('applications')->findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(["status" => "error", "message" => "job not available"], 404);
+        }
+        return response()->json($jobs, 200);
+    }
+
     public function create(Request $request)
     {
         $this->validate($request, [

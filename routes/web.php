@@ -31,6 +31,7 @@ $router->group(['prefix'=>'api/v1/', 'middleware' => 'auth:api'], function () us
     $router->put('jobs/{id}', ['uses' => 'JobsController@update']);
     $router->delete('jobs/{id}', ['uses' => 'JobsController@delete']);
     $router->get('jobs/{id}', ['uses' => 'JobsController@ShowOneJob']);
+    $router->get('jobs/{id}/applications', ['uses' => 'JobsController@showJobWithApplications']);
     $router->get('jobs', ['uses'=>'JobsController@showAllJobs']);
     // applications
     $router->post('applications', ['uses' => 'ApplicationController@create']);
