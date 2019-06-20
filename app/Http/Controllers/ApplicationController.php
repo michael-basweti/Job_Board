@@ -22,7 +22,7 @@ class ApplicationController extends Controller
         try {
             $applications = Application::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return response()->json(["status" => "error", "message" => "application not available"], 404);
+            return response()->json("application not available", 404);
         }
         return response()->json($applications, 200);
     }

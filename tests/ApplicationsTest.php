@@ -115,6 +115,7 @@ class ApplicationsTest extends TestCase
         $application = factory(Application::class)->create();
         $response = $this->get("/api/v1/applications/201");
         $response->assertResponseStatus(404);
+        $response->seeJson(["application not available"]);
     }
 
     public function testUserCanUpdateApplicationWithAuthorization()
