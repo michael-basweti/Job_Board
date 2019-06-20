@@ -13,7 +13,21 @@ class JobsController extends Controller
 
     public function showAllJobs(Request $request)
     {
-        $jobs = Job::all();
+        $jobs = Job::with('applications');
+        if ($request->has('sort_asc')) {
+            $books->orderBy('title', 'asc')->get();
+        }
+        if ($request->has('sort_asc')) {
+            $books->orderBy('title', 'desc')->get();
+        }
+        if ($request->has('offset') && $request->has('limit')) {
+            $jobs->offset($request->offset)->limit($request->limit);
+        }
+        if ($request->has('search')) {
+            $description = strtolower($request->search);
+            $jobs->whereRaw('LOWER(description) like (?)', "%$description%");
+        }
+        $jobs=$jobs->get();
         return response()->json($jobs, 200);
     }
 
