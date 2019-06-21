@@ -31,6 +31,7 @@ class AuthController extends Controller
                 return response()->json(['user_not_found'], 404);
             }
 
+            // @codeCoverageIgnoreStart
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
 
             return response()->json(['token_expired'], 500);
@@ -44,6 +45,7 @@ class AuthController extends Controller
             return response()->json(['token_absent' => $e->getMessage()], 500);
 
         }
+        // @codeCoverageIgnoreEnd
 
         return response()->json(compact('token'));
     }
