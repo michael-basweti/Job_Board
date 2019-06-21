@@ -49,6 +49,7 @@ class AuthenticationTest extends TestCase
         ];
         $response = $this->post('/api/v1/login', $credentials);
         $response->assertResponseStatus(404);
+        $response->seeJson(["user_not_found"]);
     }
     public function testDeleteUser()
     {
