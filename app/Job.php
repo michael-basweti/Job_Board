@@ -22,7 +22,7 @@ class Job extends Model {
      * @var array
      */
     protected $hidden = [];
-
+// @codeCoverageIgnoreStart
     // Relationships
     public function user(){
         return $this->belongsTo('App\User');
@@ -30,6 +30,7 @@ class Job extends Model {
     public function applications(){
         return $this->hasMany('App\Application');
     }
+    // @codeCoverageIgnoreEnd
 }
 
 ?>
