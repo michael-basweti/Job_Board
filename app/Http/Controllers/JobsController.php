@@ -14,9 +14,15 @@ class JobsController extends Controller
     public function showAllJobs(Request $request)
     {
         $jobs = Job::with('applications');
-        if ($request->has('sort')) {
-            $keys = explode('_', $request->sort);
-            $jobs->orderBy($keys[0], $keys[1]);
+        // if ($request->has('sort')) {
+        //     $keys = explode('_', $request->sort);
+        //     $jobs->orderBy($keys[0], $keys[1]);
+        // }
+        if ($request->has('sort_asc')) {
+            $jobs->orderBy('title', 'asc')->get();
+        }
+        if ($request->has('sort_desc')) {
+            $jobs->orderBy('title', 'desc')->get();
         }
         if ($request->has('offset') && $request->has('limit')) {
             $jobs->offset($request->offset)->limit($request->limit);

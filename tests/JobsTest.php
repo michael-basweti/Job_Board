@@ -89,14 +89,34 @@ class JobTest extends TestCase
         $response->assertResponseStatus(200);
         $response->seeJson(['description' => $job->description]);
     }
-    public function testuserCanSort()
+    // public function testuserCanSort()
+    // {
+    //     $user = factory(User::class)->states('employer')->create([
+    //         'password' => app('hash')->make($password = 'i-love-laravel'),
+    //     ]);
+    //     $job = factory(Job::class, 8)->create();
+    //     $this->be($user);
+    //     $response = $this->get("/api/v1/jobs?sort=title_asc");
+    //     $response->assertResponseStatus(200);
+    // }
+    public function testSortJobsInDescending()
     {
         $user = factory(User::class)->states('employer')->create([
             'password' => app('hash')->make($password = 'i-love-laravel'),
         ]);
-        $job = factory(Job::class, 8)->create();
         $this->be($user);
-        $response = $this->get("/api/v1/jobs?sort=title_asc");
+        $job = factory(Job::class, 5)->create();
+        $response = $this->get("/api/v1/jobs?sort_desc");
+        $response->assertResponseStatus(200);
+    }
+    public function testSortJobsInAscending()
+    {
+        $user = factory(User::class)->states('employer')->create([
+            'password' => app('hash')->make($password = 'i-love-laravel'),
+        ]);
+        $this->be($user);
+        $job = factory(Job::class, 5)->create();
+        $response = $this->get("/api/v1/jobs?sort_asc");
         $response->assertResponseStatus(200);
     }
 
@@ -189,9 +209,9 @@ class JobTest extends TestCase
         $job = factory(Job::class)->create();
         $this->be($user);
         $response = $this->put("/api/v1/jobs/{$job->id}", ["title" => "New Title"]);
-        $updatedBook = $this->get("/api/v1/jobs/{$job->id}");
+        $updatedJob = $this->get("/api/v1/jobs/{$job->id}");
         $response->assertResponseStatus(200);
-        $updatedBook->seeJson(["title" => "New Title"]);
+        $updatedJob->seeJson(["title" => "New Title"]);
     }
     public function testUserCannotUpdateJobIfTheyAreApplicants()
     {
