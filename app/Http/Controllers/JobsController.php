@@ -93,7 +93,9 @@ class JobsController extends Controller
             if(Auth::id()==$jobs->user_id){
                 $jobs->update($request->all());
             }else{
+                // @codeCoverageIgnoreStart
                 return response()->json("Only the owner can update", 403);
+                // @codeCoverageIgnoreEnd
             }
         }else {
             return response()->json("Only employers can perform this action", 403);
@@ -114,7 +116,9 @@ class JobsController extends Controller
                 $job->delete();
                 return response('Deleted Successfully', 204);
             }else{
+                // @codeCoverageIgnoreStart
                 return response()->json("Only the owner can delete this job", 403);
+                // @codeCoverageIgnoreEnd
             }
         }else {
             return response()->json("Only employers can perform this action", 403);

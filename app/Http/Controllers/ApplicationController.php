@@ -62,7 +62,9 @@ class ApplicationController extends Controller
             if(Auth::id()==$applications->user_id){
                 $applications->update($request->all());
             }else{
+                // @codeCoverageIgnoreStart
                 return response()->json("Only the owner can update", 403);
+                // @codeCoverageIgnoreEnd
             }
         }else {
             return response()->json("Only applicants can perform this action", 403);
@@ -83,7 +85,9 @@ class ApplicationController extends Controller
                 $application->delete();
                 return response('Deleted Successfully', 204);
             }else{
+                // @codeCoverageIgnoreStart
                 return response()->json(["status" => "error", "message" => "Only the owner can delete this job"], 403);
+                // @codeCoverageIgnoreEnd
             }
         }else {
             return response()->json("Only applicants can perform this action", 403);
