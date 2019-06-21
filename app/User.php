@@ -30,6 +30,7 @@ class User extends Model implements JWTSubject, AuthenticatableContract, Authori
     protected $hidden = [
         'password',
     ];
+    // @codeCoverageIgnoreStart
 
     public function getJWTIdentifier()
     {
@@ -40,4 +41,5 @@ class User extends Model implements JWTSubject, AuthenticatableContract, Authori
     {
         return [];
     }
+    // @codeCoverageIgnoreEnd
 }
