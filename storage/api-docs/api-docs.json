@@ -74,7 +74,7 @@
             },
             "put": {
                 "tags": [
-                    "Register a user"
+                    "Edit a user"
                 ],
                 "operationId": "/sample/category/things",
                 "parameters": [
