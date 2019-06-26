@@ -8,10 +8,10 @@
 ## Getting the swagger Documented Api
 * visit the online API [HERE](https://whispering-crag-95331.herokuapp.com/)
 * The documentation won't load automatically due to a bug in the package I'm using so do as the image below suggests
-![Screenshot 2019-06-13 at 23 58 00](https://user-images.githubusercontent.com/23398223/59487937-c138d580-8e86-11e9-868e-0c03b128db16.jpg)
+![Screenshot 2019-06-26 at 18 13 18](https://user-images.githubusercontent.com/23398223/60192864-505acb80-983f-11e9-9c77-42ff719d3163.jpg)
 
 * On clicking Load Unsafe Scripts to load http over https, the following page will be loaded
-<img width="1432" alt="Screenshot 2019-06-13 at 23 59 04" src="https://user-images.githubusercontent.com/23398223/59488096-402e0e00-8e87-11e9-8242-4deb5579edd0.png">
+<img width="1427" alt="Screenshot 2019-06-26 at 18 27 07" src="https://user-images.githubusercontent.com/23398223/60193308-19d18080-9840-11e9-808d-4081b7ba99e8.png">
 
 
 <!-- ## URLs
