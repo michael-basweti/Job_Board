@@ -1,10 +1,10 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Example API",
+        "title": "Job Board API",
         "contact": {
-            "name": "Support Team",
-            "email": "support@example.com"
+            "name": "Michael Basweti",
+            "email": "michael.basweti@andela.com"
         },
         "version": "1.0"
     },
