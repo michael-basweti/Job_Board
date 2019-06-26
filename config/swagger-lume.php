@@ -199,6 +199,6 @@ return [
     |--------------------------------------------------------------------------
      */
     'constants' => [
-        'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'https://whispering-crag-95331.herokuapp.com'),
+        // 'SWAGGER_LUME_CONST_HOST' => env('SWAGGER_LUME_CONST_HOST', 'https://whispering-crag-95331.herokuapp.com'),
     ],
 ];
