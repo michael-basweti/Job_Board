@@ -8,11 +8,11 @@ class Controller extends BaseController
 {
      /**
      * @OA\Info(
-     *   title="Example API",
+     *   title="Job Board API",
      *   version="1.0",
      *   @OA\Contact(
-     *     email="support@example.com",
-     *     name="Support Team"
+     *     email="michael.basweti@andela.com",
+     *     name="Michael Basweti"
      *   )
      * )
      *  * @OA\SecurityScheme(
