@@ -59,72 +59,70 @@ Pass id of the user you want to see, dont forget to pass authorization token
 #### DELETE::https://whispering-crag-95331.herokuapp.com/api/v1/users/{}
 * Pass id of the user you want to delete, dont forget to pass authorization token
 
-<!-- ### Book URLs
+### Job URLs
 * For the all the following URLs, You need to pass the bearer token in the headers
-#### POST::https://whispering-crag-95331.herokuapp.com/api/v1/books
+#### POST::https://whispering-crag-95331.herokuapp.com/api/v1/jobs
 ```
-"title":"A man of the people",
-"publisher":"Longhorn Publishers",
-"year_of_publication":"2007",
-"description":"A book on corrupt African leaders",
-"author_id":1
+"title":"Job 1",
+"description":"A nice Job",
+"start_date":"01/02/2007",
+"delivery_date":"01/01/2007",
+"expected_income":"2000",
 ```
 * author_id should belong to an existing user
-#### PUT::https://whispering-crag-95331.herokuapp.com/api/v1/books{id}
+#### PUT::https://whispering-crag-95331.herokuapp.com/api/v1/jobs{id}
 ```
-"title":"An enemy of the people",
-"publisher":"Longhorn",
+"title":"Job 1",
+"description":"A nice job",
 ```
-#### DELETE::https://whispering-crag-95331.herokuapp.com/api/v1/books{id}
+#### DELETE::https://whispering-crag-95331.herokuapp.com/api/v1/jobs{id}
 * Here you just need to pass the id
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books{id}
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/jobs{id}
 * Here you just need to pass the id to get a single book
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books
-* Get all books
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/jobs
+* Get all jobs
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books?sort_desc
-* This will sort the books in a descending order
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/jobs?sort_desc
+* This will sort the jobs in a descending order
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books?limit=2&offset=3
-* This will paginates the books into what you want using limit and offset
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/jobs?sort_asc
+* This will sort the jobs in ascending order
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books?author=mike
-* This will return all the books written by mike
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/jobs?limit=2&offset=3
+* This will paginates the jobs into what you want using limit and offset
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books?search=I have no idea
-* This searches for a book by the title "I have no idea"
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/jobs?search=I+have+no+idea
+* This searches for a job by the title "I have no idea"
 
-## Author URLs
+## Applications URLs
 * For the all the following URLs, You need to pass the bearer token in the headers
-#### POST::https://whispering-crag-95331.herokuapp.com/api/v1/authors
+#### POST::https://whispering-crag-95331.herokuapp.com/api/v1/applications
 ```
-"name":"Elijah Ominde",
-"email":"elija@gmail.com",
-"dob":"2007",
+"title":"Application 1",
+"description":"hello job",
+"job_id":1
 ```
 
-#### PUT::https://whispering-crag-95331.herokuapp.com/api/v1/authors{id}
+#### PUT::https://whispering-crag-95331.herokuapp.com/api/v1/applications/{id}
 ```
-"name":"Elijah Basweti",
+"description":"hello job"
 
 ```
-#### DELETE::https://whispering-crag-95331.herokuapp.com/api/v1/authors{id}
-* Here you just need to pass the id to delete an author
+#### DELETE::https://whispering-crag-95331.herokuapp.com/api/v1/applications/{id}
+* Here you just need to pass the id to delete an application
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors{id}
-* Here you just need to pass the id to get a single authors
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/applications/{id}
+* Here you just need to pass the id to get a single application
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors{id}/books
-* Return all the books written by an author
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/jobs/{id}/applications
+* Return all the applications for a given job
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors
-* Get all authors
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/applications
+* Get all applications
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors?offset=1&limit=2
-* Sets the limit and offset of the authors you want to get
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/applications?offset=1&limit=2
+* Sets the limit and offset of the applications you want to get
 
-#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors?name=mike
-* Searches for an author by the name Mike
- -->
+
