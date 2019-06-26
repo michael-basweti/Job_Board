@@ -10,7 +10,9 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
+if (env('APP_ENV') === 'staging') {
+    URL::forceSchema('https');
+}
 $router->group(['prefix'=>'api/v1/'], function () use ($router){
 
     $router->post('users', ['uses' => 'UserController@create']);
