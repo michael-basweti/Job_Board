@@ -75,7 +75,7 @@
         const ui = SwaggerUIBundle({
             dom_id: '#swagger-ui',
 
-            url: "{!! $urlToDocs !!}",
+            url: "https://whispering-crag-95331.herokuapp.com/docs",
             operationsSorter: {!! isset($operationsSorter) ? '"' . $operationsSorter . '"' : 'null' !!},
             configUrl: {!! isset($additionalConfigUrl) ? '"' . $additionalConfigUrl . '"' : 'null' !!},
             validatorUrl: {!! isset($validatorUrl) ? '"' . $validatorUrl . '"' : 'null' !!},
