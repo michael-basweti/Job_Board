@@ -81,7 +81,7 @@ class JobsController extends Controller
      * @OA\GET(
      *     path="/api/v1/jobs/{id}/application",
      *     operationId="/sample/category/things",
-     *     tags={"Get One with all applications"},
+     *     tags={"Get One Job with all applications"},
      *security={{"bearerAuth":{}}},
      *@OA\Parameter(
      *         name="id",

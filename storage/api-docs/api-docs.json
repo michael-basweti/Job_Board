@@ -497,7 +497,7 @@
         "/api/v1/jobs/{id}/application": {
             "get": {
                 "tags": [
-                    "Get One with all applications"
+                    "Get One Job with all applications"
                 ],
                 "operationId": "/sample/category/things",
                 "parameters": [
