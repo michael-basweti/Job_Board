@@ -79,7 +79,7 @@ class JobsController extends Controller
 
     /**
      * @OA\GET(
-     *     path="/api/v1/jobs/{id}/application",
+     *     path="/api/v1/jobs/{id}/applications",
      *     operationId="/sample/category/things",
      *     tags={"Get One Job with all applications"},
      *security={{"bearerAuth":{}}},
@@ -136,9 +136,9 @@ class JobsController extends Controller
      *         @OA\Schema(type="string")
      *     ),
      *     @OA\Parameter(
-     *         name="start_date'",
+     *         name="start_date",
      *         in="query",
-     *         description="start date'",
+     *         description="start date",
      *         required=false,
      *         @OA\Schema(type="string")
      *     ),

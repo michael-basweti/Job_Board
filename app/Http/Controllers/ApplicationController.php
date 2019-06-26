@@ -124,7 +124,7 @@ class ApplicationController extends Controller
     }
    /**
      * @OA\PUT(
-     *     path="/api/v1/applications",
+     *     path="/api/v1/applications/{id}",
      *     operationId="/sample/category/things",
      *     tags={"Edit an application"},
      *security={{"bearerAuth":{}}},
