@@ -1,0 +1,47 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Example API",
+        "contact": {
+            "name": "Support Team",
+            "email": "support@example.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/users": {
+            "get": {
+                "tags": [
+                    "Get All Users"
+                ],
+                "operationId": "/sample/category/things",
+                "responses": {
+                    "200": {
+                        "description": "Returns all users",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

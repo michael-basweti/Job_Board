@@ -9,6 +9,21 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+     /**
+     * @OA\GET(
+     *     path="/api/v1/users",
+     *     operationId="/sample/category/things",
+     *     tags={"Get All Users"},
+     *security={{"bearerAuth":{}}},
+     *
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns all users",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function showAllUsers()
     {
         return response()->json(User::all());
