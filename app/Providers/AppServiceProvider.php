@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Laravel\Lumen\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,5 +15,14 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->register(\Tymon\JWTAuth\Providers\LumenServiceProvider::class);
     }
+    public function boot(UrlGenerator $url){
+
+        if(env('REDIRECT_HTTPS'))
+         {
+           $url->forceSchema('https');
+         }
+
+
+   }
 
 }
