@@ -15,10 +15,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->register(\Tymon\JWTAuth\Providers\LumenServiceProvider::class);
     }
-    public function boot()
-{
-     if (!\App::environment('local')) {
-          \URL::forceSchema('https');
-     }
-}
+//     public function boot()
+// {
+//      if (!\App::environment('local')) {
+//           \URL::forceSchema('https');
+//      }
+// }
 }
