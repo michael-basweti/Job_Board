@@ -11,6 +11,21 @@ use Illuminate\Http\Request;
 class JobsController extends Controller
 {
 
+    /**
+     * @OA\GET(
+     *     path="/api/v1/jobs",
+     *     operationId="/sample/category/things",
+     *     tags={"Get All Jobs"},
+     *security={{"bearerAuth":{}}},
+     *
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function showAllJobs(Request $request)
     {
         $jobs = Job::with('applications');
@@ -31,7 +46,27 @@ class JobsController extends Controller
         $jobs=$jobs->get();
         return response()->json($jobs, 200);
     }
-
+/**
+     * @OA\GET(
+     *     path="/api/v1/jobs/{id}",
+     *     operationId="/sample/category/things",
+     *     tags={"Get One Job"},
+     *security={{"bearerAuth":{}}},
+     *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="job id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function showOneJob($id)
     {
         try {
@@ -42,6 +77,27 @@ class JobsController extends Controller
         return response()->json($jobs, 200);
     }
 
+    /**
+     * @OA\GET(
+     *     path="/api/v1/jobs/{id}/application",
+     *     operationId="/sample/category/things",
+     *     tags={"Get One with all applications"},
+     *security={{"bearerAuth":{}}},
+     *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="job id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function showJobWithApplications($id)
     {
         try {
@@ -52,6 +108,58 @@ class JobsController extends Controller
         return response()->json($jobs, 200);
     }
 
+      /**
+     * @OA\POST(
+     *     path="/api/v1/jobs",
+     *     operationId="/sample/category/things",
+     *     tags={"Create a job"},
+     *security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="title",
+     *         in="query",
+     *         description="title",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="description",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="expected_income",
+     *         in="query",
+     *         description="expected income",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="start_date'",
+     *         in="query",
+     *         description="start date'",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="delivery_date",
+     *         in="query",
+     *         description="submission date",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
+     */
     public function create(Request $request)
     {
         $this->validate($request, [
@@ -79,6 +187,65 @@ class JobsController extends Controller
         return response()->json($jobs, 201);
     }
 
+          /**
+     * @OA\PUT(
+     *     path="/api/v1/jobs/{id}",
+     *     operationId="/sample/category/things",
+     *     tags={"Edit a Job"},
+     *security={{"bearerAuth":{}}},
+     *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="job id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="title",
+     *         in="query",
+     *         description="title",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="description",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="expected_income",
+     *         in="query",
+     *         description="expected income",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="start_date'",
+     *         in="query",
+     *         description="start date'",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="delivery_date",
+     *         in="query",
+     *         description="submission date",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
+     */
     public function update($id, Request $request)
     {
         try {
@@ -100,6 +267,27 @@ class JobsController extends Controller
         return response()->json($jobs, 200);
     }
 
+    /**
+     * @OA\DELETE(
+     *     path="/api/v1/jobs/{id}",
+     *     operationId="/sample/category/things",
+     *     tags={"delete a job "},
+     *security={{"bearerAuth":{}}},
+     *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="job id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="204",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function delete($id)
     {
         try {

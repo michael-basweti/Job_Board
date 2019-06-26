@@ -10,13 +10,48 @@ use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
 {
-
+/**
+     * @OA\GET(
+     *     path="/api/v1/applications",
+     *     operationId="/sample/category/things",
+     *     tags={"Get All Applications"},
+     *security={{"bearerAuth":{}}},
+     *
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns all applications",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function showAllApplications(Request $request)
     {
         $applications = Application::all();
         return response()->json($applications, 200);
     }
 
+    /**
+     * @OA\GET(
+     *     path="/api/v1/applications/{id}",
+     *     operationId="/sample/category/things",
+     *     tags={"Get One application"},
+     *security={{"bearerAuth":{}}},
+     *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="application id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns one application",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function showOneApplication($id)
     {
         try {
@@ -26,7 +61,44 @@ class ApplicationController extends Controller
         }
         return response()->json($applications, 200);
     }
-
+   /**
+     * @OA\POST(
+     *     path="/api/v1/applications",
+     *     operationId="/sample/category/things",
+     *     tags={"Create an application"},
+     *security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="title",
+     *         in="query",
+     *         description="title",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="description",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Parameter(
+     *         name="job_id",
+     *         in="query",
+     *         description="job id",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
+     */
     public function create(Request $request)
     {
         $this->validate($request, [
@@ -50,7 +122,51 @@ class ApplicationController extends Controller
 
         return response()->json($applications, 201);
     }
-
+   /**
+     * @OA\PUT(
+     *     path="/api/v1/applications",
+     *     operationId="/sample/category/things",
+     *     tags={"Edit an application"},
+     *security={{"bearerAuth":{}}},
+     *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="application id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="title",
+     *         in="query",
+     *         description="title",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="description",
+     *         in="query",
+     *         description="description",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="job_id",
+     *         in="query",
+     *         description="job id",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
+     */
     public function update($id, Request $request)
     {
         try {
@@ -71,7 +187,27 @@ class ApplicationController extends Controller
         }
         return response()->json($applications, 200);
     }
-
+/**
+     * @OA\DELETE(
+     *     path="/api/v1/applications/{id}",
+     *     operationId="/sample/category/things",
+     *     tags={"delete an application "},
+     *security={{"bearerAuth":{}}},
+     *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="application id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="204",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function delete($id)
     {
         try {
