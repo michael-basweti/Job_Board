@@ -14,33 +14,40 @@
 <img width="1427" alt="Screenshot 2019-06-26 at 18 27 07" src="https://user-images.githubusercontent.com/23398223/60193308-19d18080-9840-11e9-808d-4081b7ba99e8.png">
 
 
-<!-- ## URLs
+## URLs
 * The following are the urls one may use to interact with the API
 ### USER URLs
-#### POST::https://mysterious-lake-67681.herokuapp.com/api/v1/users
+* register
+#### POST::https://whispering-crag-95331.herokuapp.com/api/v1/users
 ```
 {
     "name":"Michael",
     "email":"mike@gmail.com",
-    "password":"hello_password"
+    "password":"hello_password",
+    "role":"applicant"
 }
+role can either be applicant or employer
 ```
-#### POST::https://mysterious-lake-67681.herokuapp.com/api/v1/login
+* login
+#### POST::https://whispering-crag-95331.herokuapp.com/api/v1/login
 ```
 {
     "email":"mike@gmail.com",
     "password":"hello_password"
 }
 ```
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/users
+* get all users
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/users
 * here you should pass Authorization token got from login. Should be in the format:
 ```
 bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9teXN0ZXJpb3VzLWxha2UtNjc2ODEuaGVyb2t1YXBwLmNvbVwvYXBpXC92MVwvbG9naW4iLCJpYXQiOjE1NjA0NTI3NjAsImV4cCI6MTU2MDQ1NjM2MCwibmJmIjoxNTYwNDUyNzYwLCJqdGkiOiJXMkNrY0dMSWRzNUxMQm45Iiwic3ViIjoxLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.R2KvA1MSS3WaaWD_ZBbtFpCghKF_C4bqQbQNdcxg5yA
 ```
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/users/{}
+* get one user
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/users/{id}
 Pass id of the user you want to see, dont forget to pass authorization token
 
-#### PUT::https://mysterious-lake-67681.herokuapp.com/api/v1/users/{}
+* edit user
+#### PUT::https://whispering-crag-95331.herokuapp.com/api/v1/users/{id}
 * Pass authorization token and id together with the body you want to update e.g
 ```
 {
@@ -48,12 +55,13 @@ Pass id of the user you want to see, dont forget to pass authorization token
     "email":"mike@gmail.com",
 }
 ```
-#### DELETE::https://mysterious-lake-67681.herokuapp.com/api/v1/users/{}
+* delete user
+#### DELETE::https://whispering-crag-95331.herokuapp.com/api/v1/users/{}
 * Pass id of the user you want to delete, dont forget to pass authorization token
 
-### Book URLs
+<!-- ### Book URLs
 * For the all the following URLs, You need to pass the bearer token in the headers
-#### POST::https://mysterious-lake-67681.herokuapp.com/api/v1/books
+#### POST::https://whispering-crag-95331.herokuapp.com/api/v1/books
 ```
 "title":"A man of the people",
 "publisher":"Longhorn Publishers",
@@ -62,61 +70,61 @@ Pass id of the user you want to see, dont forget to pass authorization token
 "author_id":1
 ```
 * author_id should belong to an existing user
-#### PUT::https://mysterious-lake-67681.herokuapp.com/api/v1/books{id}
+#### PUT::https://whispering-crag-95331.herokuapp.com/api/v1/books{id}
 ```
 "title":"An enemy of the people",
 "publisher":"Longhorn",
 ```
-#### DELETE::https://mysterious-lake-67681.herokuapp.com/api/v1/books{id}
+#### DELETE::https://whispering-crag-95331.herokuapp.com/api/v1/books{id}
 * Here you just need to pass the id
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/books{id}
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books{id}
 * Here you just need to pass the id to get a single book
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/books
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books
 * Get all books
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/books?sort_desc
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books?sort_desc
 * This will sort the books in a descending order
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/books?limit=2&offset=3
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books?limit=2&offset=3
 * This will paginates the books into what you want using limit and offset
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/books?author=mike
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books?author=mike
 * This will return all the books written by mike
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/books?search=I have no idea
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/books?search=I have no idea
 * This searches for a book by the title "I have no idea"
 
 ## Author URLs
 * For the all the following URLs, You need to pass the bearer token in the headers
-#### POST::https://mysterious-lake-67681.herokuapp.com/api/v1/authors
+#### POST::https://whispering-crag-95331.herokuapp.com/api/v1/authors
 ```
 "name":"Elijah Ominde",
 "email":"elija@gmail.com",
 "dob":"2007",
 ```
 
-#### PUT::https://mysterious-lake-67681.herokuapp.com/api/v1/authors{id}
+#### PUT::https://whispering-crag-95331.herokuapp.com/api/v1/authors{id}
 ```
 "name":"Elijah Basweti",
 
 ```
-#### DELETE::https://mysterious-lake-67681.herokuapp.com/api/v1/authors{id}
+#### DELETE::https://whispering-crag-95331.herokuapp.com/api/v1/authors{id}
 * Here you just need to pass the id to delete an author
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/authors{id}
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors{id}
 * Here you just need to pass the id to get a single authors
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/authors{id}/books
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors{id}/books
 * Return all the books written by an author
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/authors
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors
 * Get all authors
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/authors?offset=1&limit=2
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors?offset=1&limit=2
 * Sets the limit and offset of the authors you want to get
 
-#### GET::https://mysterious-lake-67681.herokuapp.com/api/v1/authors?name=mike
+#### GET::https://whispering-crag-95331.herokuapp.com/api/v1/authors?name=mike
 * Searches for an author by the name Mike
  -->
