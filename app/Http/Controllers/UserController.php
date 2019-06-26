@@ -28,13 +28,78 @@ class UserController extends Controller
     {
         return response()->json(User::all());
     }
-
+/**
+     * @OA\GET(
+     *     path="/api/v1/users/{id}",
+     *     operationId="/sample/category/things",
+     *     tags={"Get One User"},
+     *security={{"bearerAuth":{}}},
+     *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="user id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns one user",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function showOneUser($id)
     {
 
         return response()->json(User::find($id));
     }
 
+         /**
+     * @OA\POST(
+     *     path="/api/v1/users",
+     *     operationId="/sample/category/things",
+     *     tags={"Register a user"},
+     *security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="name",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="email",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="password",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="role",
+     *         in="query",
+     *         description="role, either 'applicant' or 'employer'",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
+     */
     public function create(Request $request)
     {
         $this->validate($request, [
@@ -58,7 +123,58 @@ class UserController extends Controller
 
         return response()->json("User created", 201);
     }
-
+         /**
+     * @OA\PUT(
+     *     path="/api/v1/users",
+     *     operationId="/sample/category/things",
+     *     tags={"Register a user"},
+     *security={{"bearerAuth":{}}},
+      *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="user id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="name",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="email",
+     *         in="query",
+     *         description="email",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="password",
+     *         in="query",
+     *         description="password",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="role",
+     *         in="query",
+     *         description="role, either 'applicant' or 'employer'",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
+     */
     public function update($id, Request $request)
     {
         $user = User::findOrFail($id);
@@ -71,7 +187,27 @@ class UserController extends Controller
 
         return response()->json($user, 200);
     }
-
+    /**
+     * @OA\DELETE(
+     *     path="/api/v1/users/{id}",
+     *     operationId="/sample/category/things",
+     *     tags={"delete a user "},
+     *security={{"bearerAuth":{}}},
+     *@OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="user id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="204",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *
+     * )
+     */
     public function delete($id)
     {
         if(Auth::id()==$id){
